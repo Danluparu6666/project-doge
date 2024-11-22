@@ -1,0 +1,39 @@
+Options -Indexes
+ErrorDocument 403 /request-error.php?code=403
+ErrorDocument 404 /request-error.php?code=404
+
+Redirect 404 /.gitignore
+
+RewriteEngine On
+
+RewriteRule ^catalog/$ /Catalog.php [L]
+
+RewriteRule ^games/start$ /Api/PlayGame.php [L,QSA]
+
+RewriteRule ^user/request-friendship$ /users/request-friendship.php [L,QSA]
+RewriteRule ^user/decline-friend-request$ /users/decline-friend-request.php [L,QSA]
+RewriteRule ^users/friends$ /Friends.php [L]
+RewriteRule ^users/profile$ /User.php [L]
+
+RewriteRule ^mobile-app-upgrades/native-ios/bc$ /Nuggets.php [L,QSA]
+
+RewriteRule ^my/account$ /Settings.php [L,QSA]
+
+RewriteRule ^users/(\d+)/profile$ /User.php?ID=$1 [L]
+RewriteRule ^games/(\d+)/profile$ /Place.php?ID=$1 [L]
+
+RewriteRule ^v1/games$ /v1/games/index.php [L,QSA]
+RewriteRule ^v1/games/$ /v1/games/index.php [L,QSA]
+RewriteRule ^v1/games/(\d+)/votes$ /v1/games/votes.php?ID=$1 [L]
+RewriteRule ^v1/games/(\d+)/favorites$ /v1/games/favorites.php?ID=$1 [L]
+RewriteRule ^v2/games/(\d+)/media$ /v2/games/media.php?ID=$1 [L]
+RewriteRule ^v1/users/(\d+)/currency$ /v1/users/currency.php?ID=$1 [L]
+RewriteRule ^v1/users/(\d+)/outfits$ /v1/users/outfits.php?ID=$1 [L]
+
+RewriteRule ^v1.1/avatar-fetch/$ /Game/CharacterFetch.php [L,QSA]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+RewriteRule ^(.*)\.aspx$ $1 [L]
+RewriteRule ^(.*)\.ashx$ $1 [L]
+# RewriteRule ^(.*)\.html$ $1 [L]
